@@ -18,7 +18,6 @@ class GreatPlaces with ChangeNotifier {
 
   Future<void> addPlace(
     String pickedTitle,
-    File pickedImage,
     PlaceLocation pickedLocation,
   ) async {
     final address = await LocationHelper.getPlaceAddress(
@@ -30,7 +29,6 @@ class GreatPlaces with ChangeNotifier {
     );
     final newPlace = Place(
       id: DateTime.now().toString(),
-      image: pickedImage,
       title: pickedTitle,
       location: updatedLocation,
     );
@@ -41,7 +39,6 @@ class GreatPlaces with ChangeNotifier {
       {
         'id': newPlace.id,
         'title': newPlace.title,
-        'image': newPlace.image.path,
         'loc_lat': newPlace.location.latitude,
         'loc_lng': newPlace.location.longitude,
         'address': newPlace.location.address
@@ -56,9 +53,6 @@ class GreatPlaces with ChangeNotifier {
           (e) => Place(
             id: e['id'],
             title: e['title'],
-            image: File(
-              e['image'],
-            ),
             location: PlaceLocation(
               latitude: e['loc_lat'],
               longitude: e['loc_lng'],
