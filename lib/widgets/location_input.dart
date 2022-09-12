@@ -3,7 +3,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
 import '../helpers/location_helper.dart';
-import '../screens/map_screen.dart';
 
 class LocationInput extends StatefulWidget {
   //we add this to be able to pass data from child to parent widget
