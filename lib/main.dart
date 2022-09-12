@@ -8,6 +8,7 @@ import './screens/auth_screen.dart';
 import './providers/products.dart';
 import './providers/auth.dart';
 import 'helpers/custom_routes.dart';
+import 'screens/places_list_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -65,6 +66,7 @@ class MyApp extends StatelessWidget {
           routes: {
             //ProductDetailScreen.routeName: (context) => ProductDetailScreen(),
             AuthScreen.routeName: (context) => AuthScreen(),
+            PlacesListScreen.routeName: (context) => PlacesListScreen(),
           },
         ),
       ),

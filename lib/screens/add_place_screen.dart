@@ -40,6 +40,13 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Share my location'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/places');
+              },
+              icon: Icon(Icons.list))
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
