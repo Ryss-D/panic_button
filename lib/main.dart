@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       child: Consumer<Auth>(
         builder: (context, auth, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Shop App',
+          title: 'Panic button',
           theme: theme.copyWith(
             colorScheme:
                 theme.colorScheme.copyWith(secondary: Colors.deepOrange),

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:provider/provider.dart';
 
 import '../models/place.dart';
+import '../providers/auth.dart';
 import '../providers/great_places.dart';
 import '../widgets/location_input.dart';
 
@@ -60,6 +61,20 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             icon: Icon(Icons.cancel),
             label: Text('Stop sharing'),
             onPressed: _isActive ? _savePlace : null,
+            //remove elevatino to set the button full on the button
+            style: ButtonStyle(
+              elevation: MaterialStateProperty.all<double>(0),
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              //backgroundColor: Theme.of(context).accentColor),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ElevatedButton.icon(
+            icon: Icon(Icons.logout),
+            label: Text('Logout'),
+            onPressed: Provider.of<Auth>(context, listen: false).logout,
             //remove elevatino to set the button full on the button
             style: ButtonStyle(
               elevation: MaterialStateProperty.all<double>(0),

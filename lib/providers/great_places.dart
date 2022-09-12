@@ -17,7 +17,6 @@ class GreatPlaces with ChangeNotifier {
   }
 
   Future<void> addPlace(
-    String pickedTitle,
     PlaceLocation pickedLocation,
   ) async {
     final address = await LocationHelper.getPlaceAddress(
@@ -29,7 +28,6 @@ class GreatPlaces with ChangeNotifier {
     );
     final newPlace = Place(
       id: DateTime.now().toString(),
-      title: pickedTitle,
       location: updatedLocation,
     );
     _items.add(newPlace);
@@ -38,7 +36,6 @@ class GreatPlaces with ChangeNotifier {
       'user_places',
       {
         'id': newPlace.id,
-        'title': newPlace.title,
         'loc_lat': newPlace.location.latitude,
         'loc_lng': newPlace.location.longitude,
         'address': newPlace.location.address
@@ -52,7 +49,6 @@ class GreatPlaces with ChangeNotifier {
         .map(
           (e) => Place(
             id: e['id'],
-            title: e['title'],
             location: PlaceLocation(
               latitude: e['loc_lat'],
               longitude: e['loc_lng'],
