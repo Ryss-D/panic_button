@@ -39,23 +39,6 @@ class _LocationState extends State<LocationInput> {
     }
   }
 
-  Future<void> _selectOnMap() async {
-    final LatLng selectedLocation = await Navigator.of(context).push(
-      MaterialPageRoute(
-        //this change the open animation and change a close button
-        fullscreenDialog: true,
-        builder: (ctx) => MapScreen(
-          isSelecting: true,
-        ),
-      ),
-    );
-    if (selectedLocation == null) {
-      return;
-    }
-    _showPreview(selectedLocation.latitude, selectedLocation.longitude);
-    widget.onSelectPlace(selectedLocation.latitude, selectedLocation.longitude);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -87,11 +70,6 @@ class _LocationState extends State<LocationInput> {
               ),
               label: Text('Current location'),
               onPressed: _getCurrentUserLocation,
-            ),
-            TextButton.icon(
-              icon: Icon(Icons.map),
-              label: Text('Select on Map'),
-              onPressed: _selectOnMap,
             ),
           ],
         ),

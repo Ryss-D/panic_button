@@ -16,26 +16,18 @@ class AddPlaceScreen extends StatefulWidget {
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
   final _titleController = TextEditingController();
-  File? _pickedImage;
   PlaceLocation? _pickedLocation;
-
-  void _selectImage(File pickedImage) {
-    _pickedImage = pickedImage;
-  }
 
   void _selectPlace(double lat, double lng) {
     _pickedLocation = PlaceLocation(latitude: lat, longitude: lng);
   }
 
   void _savePlace() {
-    if (_titleController.text.isEmpty ||
-        _pickedImage == null ||
-        _pickedLocation == null) {
+    if (_titleController.text.isEmpty || _pickedLocation == null) {
       return;
     }
     Provider.of<GreatPlaces>(context, listen: false).addPlace(
       _titleController.text,
-      _pickedImage!,
       _pickedLocation!,
     );
     Navigator.of(context).pop();
@@ -73,8 +65,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             ),
           ),
           ElevatedButton.icon(
-            icon: Icon(Icons.add),
-            label: Text('Add place'),
+            icon: Icon(Icons.cancel),
+            label: Text('Stop sharing'),
             onPressed: _savePlace,
             //remove elevatino to set the button full on the button
             style: ButtonStyle(
