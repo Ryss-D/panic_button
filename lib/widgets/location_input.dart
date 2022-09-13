@@ -63,6 +63,7 @@ class _LocationState extends State<LocationInput> {
           children: [
             TextButton.icon(
               icon: Icon(
+                size: 80,
                 Icons.location_on,
               ),
               label: Text('Current location'),
