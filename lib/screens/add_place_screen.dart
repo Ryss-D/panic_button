@@ -20,9 +20,9 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   PlaceLocation? _pickedLocation;
 
   void _selectPlace(double lat, double lng) {
-    _pickedLocation = PlaceLocation(latitude: lat, longitude: lng);
     setState(() {
       _isActive = true;
+      _pickedLocation = PlaceLocation(latitude: lat, longitude: lng);
     });
     Provider.of<GreatPlaces>(context, listen: false).addPlace(
       _pickedLocation!,

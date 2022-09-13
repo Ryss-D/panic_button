@@ -27,8 +27,6 @@ class _LocationState extends State<LocationInput> {
   }
 
   Future<void> _getCurrentUserLocation() async {
-    //byfault when we call this method on a android simulator
-    //we get the google offices location
     try {
       final locData = await Location().getLocation();
       _showPreview(locData.latitude!, locData.longitude!);
