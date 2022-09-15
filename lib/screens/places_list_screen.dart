@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:panic_button/helpers/remote_helper.dart';
 import 'package:panic_button/providers/great_places.dart';
 import 'package:provider/provider.dart';
 
@@ -12,10 +13,16 @@ class PlacesListScreen extends StatefulWidget {
 
 class PlacesListScreenState extends State<PlacesListScreen> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Locations shared with me'),
+        title: const Text('Locations shared with me'),
       ),
       body: FutureBuilder(
         future: Provider.of<GreatPlaces>(context, listen: false)

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'package:panic_button/helpers/remote_helper.dart';
 
 import '../models/place.dart';
 import '../helpers/db_helper.dart';
@@ -41,11 +42,12 @@ class GreatPlaces with ChangeNotifier {
         'address': newPlace.location.address
       },
     );
+    RemoteHelper.addRemote(updatedLocation);
   }
 
   Future<void> fetchAndSetPlaces() async {
     final dataList = await DBHelper.getData('user_places');
-    dataList
+    _items = dataList
         .map(
           (e) => Place(
             id: e['id'],

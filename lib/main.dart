@@ -36,16 +36,16 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => Auth(),
         ),
-        ChangeNotifierProxyProvider<Auth, Products>(
-          //here we provide to builder a new instance of the class mixed with ChangeNofifier
-          create: (ctx) =>
-              Products(Provider.of<Auth>(ctx, listen: false).token, '', []),
-          // update is of type (context, myModel, myNotifier)
-          update: (context, auth, previousProducts) => Products(
-              auth.token,
-              auth.userId,
-              previousProducts == null ? [] : previousProducts.items),
-        ),
+        //ChangeNotifierProxyProvider<Auth, Products>(
+        //here we provide to builder a new instance of the class mixed with ChangeNofifier
+        // create: (ctx) =>
+        //    Products(Provider.of<Auth>(ctx, listen: false).token, '', []),
+        // update is of type (context, myModel, myNotifier)
+        //update: (context, auth, previousProducts) => Products(
+        //   auth.token,
+        //  auth.userId,
+        // previousProducts == null ? [] : previousProducts.items),
+        //),
         ChangeNotifierProvider(create: (context) => GreatPlaces())
       ],
       child: Consumer<Auth>(

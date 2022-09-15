@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:provider/provider.dart';
 
+import '../helpers/remote_helper.dart';
 import '../models/place.dart';
 import '../providers/auth.dart';
 import '../providers/great_places.dart';
@@ -33,6 +34,13 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     setState(() {
       _isActive = false;
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    RemoteHelper.loadRemote();
+    super.initState();
   }
 
   @override

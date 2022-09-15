@@ -35,7 +35,7 @@ class Auth with ChangeNotifier {
     final url = Uri.parse(
         // Api key is on configuration section on firebase
         //TODO: create env files to move keys
-        'https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=AIzaSyDEZ4z3xuRq9LOhR7AOAOZYiFJMYTyiNb0');
+        'https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=AIzaSyBDsk3hdpyKuwtQj0u76nDHU49wrbth2ic');
     try {
       final response = await http.post(
         url,
