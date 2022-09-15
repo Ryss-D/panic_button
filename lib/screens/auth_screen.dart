@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,17 +19,17 @@ class AuthScreen extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
-                  Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
+                  const Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
+                  const Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                stops: [0, 1],
+                stops: const [0, 1],
               ),
             ),
           ),
           SingleChildScrollView(
-            child: Container(
+            child: SizedBox(
               height: deviceSize.height,
               width: deviceSize.width,
               child: Column(
@@ -40,7 +38,7 @@ class AuthScreen extends StatelessWidget {
                 children: [
                   Flexible(
                     flex: deviceSize.width > 600 ? 2 : 1,
-                    child: AuthCard(),
+                    child: const AuthCard(),
                   ),
                 ],
               ),
@@ -82,14 +80,14 @@ class _AuthCardState extends State<AuthCard>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
     );
     _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeIn),
     );
     _slideAnimation = Tween<Offset>(
-      begin: Offset(0, -1.5),
-      end: Offset(0, 0),
+      begin: const Offset(0, -1.5),
+      end: const Offset(0, 0),
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -108,11 +106,11 @@ class _AuthCardState extends State<AuthCard>
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text('An error ocurred'),
+        title: const Text('An error ocurred'),
         content: Text(message),
         actions: [
           TextButton(
-            child: Text('Okay'),
+            child: const Text('Okay'),
             onPressed: () {
               Navigator.of(ctx).pop();
             },
@@ -188,7 +186,7 @@ class _AuthCardState extends State<AuthCard>
       elevation: 8.0,
       child: AnimatedContainer(
         height: _authMode == AuthMode.Signup ? 320 : 260,
-        duration: Duration(
+        duration: const Duration(
           milliseconds: 300,
         ),
         curve: Curves.easeIn,
@@ -196,14 +194,14 @@ class _AuthCardState extends State<AuthCard>
           minHeight: _authMode == AuthMode.Signup ? 320 : 260,
         ),
         width: deviceSize.width * 0.75,
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
             child: Column(
               children: [
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'E-mail'),
+                  decoration: const InputDecoration(labelText: 'E-mail'),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     value ?? '';
@@ -216,7 +214,7 @@ class _AuthCardState extends State<AuthCard>
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Password',
                   ),
                   obscureText: true,
@@ -235,7 +233,7 @@ class _AuthCardState extends State<AuthCard>
                   constraints: BoxConstraints(
                       minHeight: _authMode == AuthMode.Signup ? 60 : 0,
                       maxHeight: _authMode == AuthMode.Signup ? 120 : 0),
-                  duration: Duration(milliseconds: 300),
+                  duration: const Duration(milliseconds: 300),
                   curve: Curves.easeIn,
                   child: FadeTransition(
                     opacity: _opacityAnimation,
@@ -243,8 +241,8 @@ class _AuthCardState extends State<AuthCard>
                       position: _slideAnimation,
                       child: TextFormField(
                         enabled: _authMode == AuthMode.Signup,
-                        decoration:
-                            InputDecoration(labelText: 'Confirm your password'),
+                        decoration: const InputDecoration(
+                            labelText: 'Confirm your password'),
                         obscureText: true,
                         validator: _authMode == AuthMode.Signup
                             ? (value) {
@@ -257,40 +255,40 @@ class _AuthCardState extends State<AuthCard>
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 if (_isLoading)
-                  CircularProgressIndicator()
+                  const CircularProgressIndicator()
                 else
                   ElevatedButton(
-                    child:
-                        Text(_authMode == AuthMode.Login ? 'LOGIN' : 'SIGN UP'),
                     onPressed: _submit,
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 30.0,
                         vertical: 8.0,
                       ),
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
+                    child:
+                        Text(_authMode == AuthMode.Login ? 'LOGIN' : 'SIGN UP'),
                   ),
                 //TODO: define color
                 //TODO: define text color
                 TextButton(
-                  child: Text(
-                    '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'}',
-                  ),
                   onPressed: _switchAuthMode,
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 30.0,
                       vertical: 4,
                     ),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                  child: Text(
+                    _authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN',
                   ),
                 ),
               ],

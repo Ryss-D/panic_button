@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
 import 'package:provider/provider.dart';
 
 import '../helpers/remote_helper.dart';
@@ -10,6 +9,8 @@ import '../widgets/location_input.dart';
 
 class AddPlaceScreen extends StatefulWidget {
   static String routeName = '/add-place';
+
+  const AddPlaceScreen({super.key});
 
   @override
   _AddPlaceScreenState createState() => _AddPlaceScreenState();
@@ -38,7 +39,6 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     RemoteHelper.loadRemote();
     super.initState();
   }
@@ -47,13 +47,13 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Share my location'),
+        title: const Text('Share my location'),
         actions: [
           IconButton(
               onPressed: () {
                 Navigator.of(context).pushNamed('/places');
               },
-              icon: Icon(Icons.list))
+              icon: const Icon(Icons.list))
         ],
       ),
       body: Column(
@@ -66,15 +66,15 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
           //Expanded(
           // child: Padding(
           Padding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Center(
               child: LocationInput(_selectPlace),
             ),
           ),
           //),
           ElevatedButton.icon(
-            icon: Icon(Icons.cancel),
-            label: Text('Stop sharing'),
+            icon: const Icon(Icons.cancel),
+            label: const Text('Stop sharing'),
             onPressed: _isActive ? _savePlace : null,
             //remove elevatino to set the button full on the button
             style: ButtonStyle(
@@ -83,12 +83,12 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
               //backgroundColor: Theme.of(context).accentColor),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           ElevatedButton.icon(
-            icon: Icon(Icons.logout),
-            label: Text('Logout'),
+            icon: const Icon(Icons.logout),
+            label: const Text('Logout'),
             onPressed: Provider.of<Auth>(context, listen: false).logout,
             //remove elevatino to set the button full on the button
             style: ButtonStyle(

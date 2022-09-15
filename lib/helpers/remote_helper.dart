@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:panic_button/helpers/db_helper.dart';
 import 'package:panic_button/models/place.dart';
-import 'package:panic_button/providers/great_places.dart';
-import 'package:provider/provider.dart';
 
 class RemoteHelper {
   static Future loadRemote() async {

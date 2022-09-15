@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
 import '../helpers/location_helper.dart';
@@ -7,7 +6,7 @@ import '../helpers/location_helper.dart';
 class LocationInput extends StatefulWidget {
   //we add this to be able to pass data from child to parent widget
   final Function onSelectPlace;
-  LocationInput(this.onSelectPlace);
+  const LocationInput(this.onSelectPlace, {super.key});
 
   @override
   _LocationState createState() => _LocationState();
@@ -48,7 +47,7 @@ class _LocationState extends State<LocationInput> {
             border: Border.all(width: 1, color: Colors.grey),
           ),
           child: _previewImageUlr == ''
-              ? Text(
+              ? const Text(
                   'No location choosen',
                   textAlign: TextAlign.center,
                 )
@@ -62,11 +61,11 @@ class _LocationState extends State<LocationInput> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextButton.icon(
-              icon: Icon(
+              icon: const Icon(
                 size: 80,
                 Icons.location_on,
               ),
-              label: Text('Current location'),
+              label: const Text('Current location'),
               onPressed: _getCurrentUserLocation,
             ),
           ],

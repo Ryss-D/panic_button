@@ -11,7 +11,7 @@ class Auth with ChangeNotifier {
   String _token = '';
   DateTime _expiryDate = DateTime(0);
   String _userId = '';
-  Timer _authTimer = Timer(Duration(seconds: 5), () {});
+  Timer _authTimer = Timer(const Duration(seconds: 5), () {});
 
   bool get isAuth {
     return token != '';

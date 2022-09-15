@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:panic_button/helpers/remote_helper.dart';
 import 'package:panic_button/providers/great_places.dart';
 import 'package:provider/provider.dart';
 

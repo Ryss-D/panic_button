@@ -3,7 +3,6 @@ import 'package:panic_button/providers/great_places.dart';
 import 'package:panic_button/screens/add_place_screen.dart';
 import 'package:provider/provider.dart';
 
-import './screens/products_overview_screen.dart';
 import './screens/splash_screen.dart';
 import './screens/auth_screen.dart';
 import './providers/auth.dart';
@@ -56,7 +55,7 @@ class MyApp extends StatelessWidget {
                           : AuthScreen()),
           routes: {
             AuthScreen.routeName: (context) => AuthScreen(),
-            PlacesListScreen.routeName: (context) => PlacesListScreen(),
+            PlacesListScreen.routeName: (context) => const PlacesListScreen(),
           },
         ),
       ),
@@ -65,6 +64,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
