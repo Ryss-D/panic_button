@@ -13,7 +13,6 @@ class PlacesListScreen extends StatefulWidget {
 class PlacesListScreenState extends State<PlacesListScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 

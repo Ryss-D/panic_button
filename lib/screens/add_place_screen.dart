@@ -39,7 +39,6 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
 
   @override
   void initState() {
-    RemoteHelper.loadRemote();
     super.initState();
   }
 
@@ -51,6 +50,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
         actions: [
           IconButton(
               onPressed: () {
+                RemoteHelper.loadRemote();
                 Navigator.of(context).pushNamed('/places');
               },
               icon: const Icon(Icons.list))
