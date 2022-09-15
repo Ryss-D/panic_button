@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:panic_button/providers/great_places.dart';
 import 'package:panic_button/screens/add_place_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
               auth.userId,
               previousProducts == null ? [] : previousProducts.items),
         ),
+        ChangeNotifierProvider(create: (context) => GreatPlaces())
       ],
       child: Consumer<Auth>(
         builder: (context, auth, child) => MaterialApp(
