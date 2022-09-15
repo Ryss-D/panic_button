@@ -17,4 +17,6 @@ class LocationHelper {
     final address = await http.get(endpoint);
     return json.decode(address.body)['results'][0]['formatted_address'];
   }
+//TODO: add method to continuous update of location
+//TODO: add implementations of backgroudn lcoation service
 }

@@ -15,7 +15,6 @@ class RemoteHelper {
       if (extractedData != null) {
         extractedData.forEach(
           (placeId, placeData) async {
-            print('id $placeId data$placeData');
             await DBHelper.insert(
               'user_places',
               {
@@ -47,4 +46,5 @@ class RemoteHelper {
       );
     } catch (error) {}
   }
+//TODO:Implement patch method to update remote locations
 }

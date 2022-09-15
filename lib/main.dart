@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import './screens/products_overview_screen.dart';
 import './screens/splash_screen.dart';
 import './screens/auth_screen.dart';
-import './providers/products.dart';
 import './providers/auth.dart';
 import 'helpers/custom_routes.dart';
 import 'screens/places_list_screen.dart';
@@ -36,16 +35,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => Auth(),
         ),
-        //ChangeNotifierProxyProvider<Auth, Products>(
-        //here we provide to builder a new instance of the class mixed with ChangeNofifier
-        // create: (ctx) =>
-        //    Products(Provider.of<Auth>(ctx, listen: false).token, '', []),
-        // update is of type (context, myModel, myNotifier)
-        //update: (context, auth, previousProducts) => Products(
-        //   auth.token,
-        //  auth.userId,
-        // previousProducts == null ? [] : previousProducts.items),
-        //),
         ChangeNotifierProvider(create: (context) => GreatPlaces())
       ],
       child: Consumer<Auth>(
@@ -66,7 +55,6 @@ class MyApp extends StatelessWidget {
                           ? SplashScreen()
                           : AuthScreen()),
           routes: {
-            //ProductDetailScreen.routeName: (context) => ProductDetailScreen(),
             AuthScreen.routeName: (context) => AuthScreen(),
             PlacesListScreen.routeName: (context) => PlacesListScreen(),
           },
